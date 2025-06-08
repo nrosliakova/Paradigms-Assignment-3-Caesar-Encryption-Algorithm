@@ -17,6 +17,11 @@ char* encrypt(char* rawText, int key) {
 	return encrypted_text;
 }
 
+char* decrypt(char* encryptedText, int key) {
+	char* decrypted_text = encrypt(encryptedText, -key);
+	return decrypted_text;
+}
+
 map<char, char> create_map(int key) {
 	map<char, char> dict;
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
