@@ -4,6 +4,19 @@
 #include <map>
 using namespace std;
 
+char* encrypt(char* rawText, int key) {
+	int len = strlen(rawText);
+	char* encrypted_text = (char*)calloc(len, sizeof(char));
+	encrypted_text[len] = '\0';
+	map<char, char> code = create_map(key);
+	for (int i = 0; i < len; i++) {
+		char char_ = rawText[i];
+		char encrypted_char = code[char_];
+		encrypted_text[i] = encrypted_char;
+	}
+	return encrypted_text;
+}
+
 map<char, char> create_map(int key) {
 	map<char, char> dict;
 	char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
