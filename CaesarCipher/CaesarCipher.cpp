@@ -11,7 +11,13 @@ map<char, char> create_map(int key) {
 	while (key > 26) key -= 26;
 	while (key < -26) key += 26;
 	for (int i = 0; i < strlen(alphabet); i++) {
-		int key_ = (i + key > 26) ? i + key - 26 : i + key;
+
+		int key_;
+		if (key >= 0)
+			key_ = (i + key >= 26) ? i + key - 26 : i + key;
+		else
+			key_ = (i + key < 0) ? i + key + 26 : i + key;
+
 		dict[alphabet[i]] = alphabet[key_];
 		dict[toupper(alphabet[i])] = toupper(alphabet[key_]);
 	}
